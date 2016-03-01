@@ -6,22 +6,40 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
     <script>
-        $(function(){
-            $.ajax({
-                type: "GET",
-                url: "server.php",
-                data: "a=10",
-                cache: false,
-                success: function(answer){
-                    $("#content").html(answer);
-                },
-                error: function() {alert('Ошибка при отправке!'); repeat();}
+        $(function () {
+
+            $("#my_button").click(function () {
+
+                $.ajax({
+                    type: "GET",
+                    url: "server.php",
+                    data: "a=10",
+                    cache: false,
+                    success: function (answer) {
+                        $("#content").html(answer);
+                    },
+                    error: function () {
+                        alert('Ошибка при отправке!');
+                        repeat();
+                    }
+                });
+
+                return false;
+
             });
+
         });
+
     </script>
 
 </head>
 <body>
-<div id="content"></div>
+
+<form action="">
+    <input id="my_button" type="submit">
+</form>
+
+<div id="content" style="margin-top: 20px"></div>
+
 </body>
 </html>
